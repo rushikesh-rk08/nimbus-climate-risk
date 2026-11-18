@@ -1,0 +1,39 @@
+IMD gridded daily rainfall, 0.25 x 0.25 degree (Pai et al. 2014), years 2010-2024
+Downloaded with imdlib 0.4.0: imdlib.get_data('rain', 2010, 2024, fn_format='yearwise')
+Format received: IMD binary .grd, one file per year (imdlib's download route; same IMD gridded
+dataset as the NetCDF files on https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html).
+Raw files are not committed. Missing value -999 written as empty rain_mm.
+
+Source URL per year (HTTP POST, form field rain=<year>), retrieval time UTC, file bytes:
+  2010  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2010  retrieved 2026-11-18T13:37:54+00:00  25425900 bytes
+  2011  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2011  retrieved 2026-11-18T13:38:17+00:00  25425900 bytes
+  2012  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2012  retrieved 2026-11-18T13:38:39+00:00  25495560 bytes
+  2013  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2013  retrieved 2026-11-18T13:38:57+00:00  25425900 bytes
+  2014  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2014  retrieved 2026-11-18T13:39:19+00:00  25425900 bytes
+  2015  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2015  retrieved 2026-11-18T13:39:51+00:00  25425900 bytes
+  2016  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2016  retrieved 2026-11-18T13:40:35+00:00  25495560 bytes
+  2017  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2017  retrieved 2026-11-18T13:40:50+00:00  25425900 bytes
+  2018  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2018  retrieved 2026-11-18T13:41:14+00:00  25425900 bytes
+  2019  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2019  retrieved 2026-11-18T13:41:48+00:00  25425900 bytes
+  2020  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2020  retrieved 2026-11-18T13:42:03+00:00  25495560 bytes
+  2021  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2021  retrieved 2026-11-18T13:42:18+00:00  25425900 bytes
+  2022  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2022  retrieved 2026-11-18T13:42:59+00:00  25425900 bytes
+  2023  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2023  retrieved 2026-11-18T13:43:28+00:00  25425900 bytes
+  2024  POST https://imdpune.gov.in/cmpg/Griddata/rainfall.php  rain=2024  retrieved 2026-11-18T13:44:04+00:00  25495560 bytes
+
+Cell selection (nearest 0.25 deg grid cell; substitution if that cell has no data):
+  P01: nearest cell (25.00, 74.75) has data, used as is, 17.5 km from plant
+  P02: nearest cell (24.50, 80.75) has data, used as is, 13.9 km from plant
+  P03: nearest cell (20.00, 79.25) has data, used as is, 6.4 km from plant
+  P04: nearest cell (17.00, 79.25) has data, used as is, 6.6 km from plant
+  P05: nearest cell (11.25, 79.00) has data, used as is, 14.9 km from plant
+  P06: nearest cell (21.75, 82.25) has data, used as is, 13.9 km from plant
+  P07: nearest cell (22.75, 69.75) has data, used as is, 10.3 km from plant
+  P08: nearest cell (20.25, 86.50) has data, used as is, 13.8 km from plant
+  P09: nearest cell (23.50, 87.25) has data, used as is, 6.7 km from plant
+
+Rows written: 49311 (5479 days x 9 plants); empty rain_mm values: 1
+Log written 2026-11-18T13:45:04+00:00
+
+Single missing day: P07 cell (22.75, 69.75) has no value on 2023-10-12 (left empty, no substitution;
+the cell has data on every other day, so the cell-substitution rule did not apply).
