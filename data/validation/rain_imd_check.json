@@ -1,0 +1,596 @@
+{
+ "rule": "heavy days within +/-50% (or 1 day if IMD < 2/yr) AND annual within +/-20%; trusted = passes at >= 7 of 9 plants; rate rain if >= 3 trusted",
+ "years": "2010-2024",
+ "plants": {
+  "P01": {
+   "imd": {
+    "heavy_days": 1.4,
+    "annual_mm": 913.26,
+    "days": 5479,
+    "cell": [
+     "25",
+     "74.75"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 1.2,
+     "annual_mm": 689,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 2.07,
+     "annual_mm": 573,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 1.6,
+     "annual_mm": 637,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 0.73,
+     "annual_mm": 691,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.07,
+     "annual_mm": 648,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.0,
+     "annual_mm": 678,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 2.0,
+     "annual_mm": 571,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    }
+   }
+  },
+  "P02": {
+   "imd": {
+    "heavy_days": 1.27,
+    "annual_mm": 953.55,
+    "days": 5479,
+    "cell": [
+     "24.5",
+     "80.75"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 1.6,
+     "annual_mm": 1037,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 3.2,
+     "annual_mm": 1022,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 3.13,
+     "annual_mm": 1047,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 0.8,
+     "annual_mm": 1100,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.07,
+     "annual_mm": 1040,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.0,
+     "annual_mm": 1028,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 4.4,
+     "annual_mm": 1024,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    }
+   }
+  },
+  "P03": {
+   "imd": {
+    "heavy_days": 3.07,
+    "annual_mm": 1304.71,
+    "days": 5479,
+    "cell": [
+     "20",
+     "79.25"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 1.47,
+     "annual_mm": 1115,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 5.93,
+     "annual_mm": 1476,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 2.47,
+     "annual_mm": 1052,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 2.4,
+     "annual_mm": 1279,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.8,
+     "annual_mm": 1243,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.13,
+     "annual_mm": 1181,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 4.47,
+     "annual_mm": 1138,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    }
+   }
+  },
+  "P04": {
+   "imd": {
+    "heavy_days": 0.87,
+    "annual_mm": 861.73,
+    "days": 5479,
+    "cell": [
+     "17",
+     "79.25"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 0.73,
+     "annual_mm": 841,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 3.0,
+     "annual_mm": 834,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 2.0,
+     "annual_mm": 876,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 1.13,
+     "annual_mm": 879,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.2,
+     "annual_mm": 818,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.0,
+     "annual_mm": 749,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "NICAM16_8S": {
+     "heavy_days": 2.8,
+     "annual_mm": 777,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    }
+   }
+  },
+  "P05": {
+   "imd": {
+    "heavy_days": 1.4,
+    "annual_mm": 982.28,
+    "days": 5479,
+    "cell": [
+     "11.25",
+     "79"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 0.2,
+     "annual_mm": 860,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 2.07,
+     "annual_mm": 788,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 2.4,
+     "annual_mm": 869,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 0.6,
+     "annual_mm": 831,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.0,
+     "annual_mm": 884,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.07,
+     "annual_mm": 654,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 2.27,
+     "annual_mm": 829,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    }
+   }
+  },
+  "P06": {
+   "imd": {
+    "heavy_days": 1.73,
+    "annual_mm": 1189.21,
+    "days": 5479,
+    "cell": [
+     "21.75",
+     "82.25"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 2.4,
+     "annual_mm": 1363,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 5.13,
+     "annual_mm": 1227,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 4.47,
+     "annual_mm": 1311,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 1.2,
+     "annual_mm": 1432,
+     "heavy_ok": true,
+     "annual_ok": false,
+     "pass": false
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.27,
+     "annual_mm": 1399,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.13,
+     "annual_mm": 1464,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 5.87,
+     "annual_mm": 1331,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    }
+   }
+  },
+  "P07": {
+   "imd": {
+    "heavy_days": 3.2,
+    "annual_mm": 719.92,
+    "days": 5478,
+    "cell": [
+     "22.75",
+     "69.75"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 0.33,
+     "annual_mm": 344,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 1.27,
+     "annual_mm": 370,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 0.93,
+     "annual_mm": 283,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 0.4,
+     "annual_mm": 339,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.13,
+     "annual_mm": 436,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.0,
+     "annual_mm": 434,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 1.2,
+     "annual_mm": 388,
+     "heavy_ok": false,
+     "annual_ok": false,
+     "pass": false
+    }
+   }
+  },
+  "P08": {
+   "imd": {
+    "heavy_days": 4.2,
+    "annual_mm": 1657.22,
+    "days": 5479,
+    "cell": [
+     "20.25",
+     "86.5"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 2.47,
+     "annual_mm": 1516,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 5.47,
+     "annual_mm": 1583,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 4.2,
+     "annual_mm": 1455,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 2.4,
+     "annual_mm": 1568,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 1.0,
+     "annual_mm": 1598,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 2.47,
+     "annual_mm": 1503,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "NICAM16_8S": {
+     "heavy_days": 7.0,
+     "annual_mm": 1501,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    }
+   }
+  },
+  "P09": {
+   "imd": {
+    "heavy_days": 1.73,
+    "annual_mm": 1305.09,
+    "days": 5479,
+    "cell": [
+     "23.5",
+     "87.25"
+    ]
+   },
+   "models": {
+    "CMCC_CM2_VHR4": {
+     "heavy_days": 1.67,
+     "annual_mm": 1325,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "FGOALS_f3_H": {
+     "heavy_days": 5.87,
+     "annual_mm": 1375,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "HiRAM_SIT_HR": {
+     "heavy_days": 5.13,
+     "annual_mm": 1500,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "MRI_AGCM3_2_S": {
+     "heavy_days": 0.87,
+     "annual_mm": 1460,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "EC_Earth3P_HR": {
+     "heavy_days": 0.8,
+     "annual_mm": 1464,
+     "heavy_ok": true,
+     "annual_ok": true,
+     "pass": true
+    },
+    "MPI_ESM1_2_XR": {
+     "heavy_days": 0.0,
+     "annual_mm": 1279,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    },
+    "NICAM16_8S": {
+     "heavy_days": 6.4,
+     "annual_mm": 1333,
+     "heavy_ok": false,
+     "annual_ok": true,
+     "pass": false
+    }
+   }
+  }
+ },
+ "models": {
+  "CMCC_CM2_VHR4": {
+   "plants_passed": 5,
+   "trusted": false
+  },
+  "FGOALS_f3_H": {
+   "plants_passed": 2,
+   "trusted": false
+  },
+  "HiRAM_SIT_HR": {
+   "plants_passed": 3,
+   "trusted": false
+  },
+  "MRI_AGCM3_2_S": {
+   "plants_passed": 6,
+   "trusted": false
+  },
+  "EC_Earth3P_HR": {
+   "plants_passed": 2,
+   "trusted": false
+  },
+  "MPI_ESM1_2_XR": {
+   "plants_passed": 2,
+   "trusted": false
+  },
+  "NICAM16_8S": {
+   "plants_passed": 2,
+   "trusted": false
+  }
+ },
+ "trusted_models": [],
+ "rate_rain": false
+}
