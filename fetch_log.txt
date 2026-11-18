@@ -62,3 +62,36 @@
 [11:32:19]   table Aqueduct40_future_annual_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
 [11:32:20]   table Aqueduct40_baseline_monthly_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
 [11:32:20] Packed nimbus_data_upload.zip (2.0 MB). Upload this file and you're done.
+[11:34:00] ============================================================
+[11:34:00] Nimbus data fetch started
+[11:34:01] Part A: Open-Meteo climate projections (18 requests)
+[11:34:01] Open-Meteo P01 today: already have it, skipping
+[11:34:01] Open-Meteo P01 future: already have it, skipping
+[11:34:01] Open-Meteo P02 today: already have it, skipping
+[11:34:01] Open-Meteo P02 future: already have it, skipping
+[11:34:01] Open-Meteo P03 today: already have it, skipping
+[11:34:01] Open-Meteo P03 future: already have it, skipping
+[11:34:01] Open-Meteo P04 today: already have it, skipping
+[11:34:01] Open-Meteo P04 future: already have it, skipping
+[11:34:01] Open-Meteo P05 today: already have it, skipping
+[11:34:01] Open-Meteo P05 future: rate limited, waiting 60 s (try 1/6)
+[11:35:03] Open-Meteo P05 future: saved 5844 days
+[11:35:06] Open-Meteo P06 today: already have it, skipping
+[11:35:06] Open-Meteo P06 future: already have it, skipping
+[11:35:06] Open-Meteo P07 today: already have it, skipping
+[11:35:06] Open-Meteo P07 future: already have it, skipping
+[11:35:06] Open-Meteo P08 today: already have it, skipping
+[11:35:06] Open-Meteo P08 future: already have it, skipping
+[11:35:06] Open-Meteo P09 today: already have it, skipping
+[11:35:06] Open-Meteo P09 future: already have it, skipping
+[11:35:06] Part B: WRI Aqueduct 4.0
+[11:35:06] Aqueduct ZIP already downloaded (262 MB), skipping
+[11:35:06] Aqueduct archive holds 56 files; listing saved
+[11:35:07]   Aq40_Y2023D07M05__baseline_annual: 946 shapes in box, wrote 9 rows for 9 plants
+[11:35:07]   Aq40_Y2023D07M05__baseline_monthly: 285 shapes in box, wrote 9 rows for 9 plants
+[11:35:07]   Aq40_Y2023D07M05__future_annual: 285 shapes in box, wrote 9 rows for 9 plants
+[11:35:07] Basin IDs found for plants: ['35088.0', '35160.0', '35648.0', '35701.0', '35719.0', '35859.0', '35945.0', '36087.0', '36372.0', '452458', '452458-IND.19_1-3372', '452458.0', '452482', '452482-IND.29_1-3370', '452482.0', '453145', '453145-IND.36_1-3366', '453145.0', '453210', '453210-IND.26_1-3366']
+[11:35:10]   table Aqueduct40_baseline_annual_y2023m07d05: kept 9 rows matching plant basins via string_id
+[11:35:10]   table Aqueduct40_future_annual_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
+[11:35:10]   table Aqueduct40_baseline_monthly_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
+[11:35:11] Packed nimbus_data_upload.zip (2.1 MB). Upload this file and you're done.
