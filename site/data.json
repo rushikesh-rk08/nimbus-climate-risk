@@ -1,0 +1,2138 @@
+{
+ "meta": {
+  "built_utc": "2026-11-18T12:49:54+00:00",
+  "company": "Nimbus Cement Ltd (fictional)",
+  "revenue_total_cr": 9658.0,
+  "asset_total_cr": 15450.0,
+  "periods": {
+   "today": "2010-2025",
+   "future": "2030-2045"
+  },
+  "retrieved": {
+   "date": "2026-11-18",
+   "first_utc": "10:52:10",
+   "last_utc": "11:35:06"
+  },
+  "models": [
+   "CMCC_CM2_VHR4",
+   "FGOALS_f3_H",
+   "HiRAM_SIT_HR",
+   "MRI_AGCM3_2_S",
+   "EC_Earth3P_HR",
+   "MPI_ESM1_2_XR",
+   "NICAM16_8S"
+  ],
+  "heat_threshold_c": {
+   "inland": 40.0,
+   "coastal": 37.0
+  },
+  "heavy_rain_mm": 64.5,
+  "rain_quality": {
+   "implausible_threshold_mm": 300.0,
+   "implausible_days": 243,
+   "max_day_mm": 1248
+  },
+  "flag_sources": {
+   "moes_cyclone_list": {
+    "short": "IMD cyclone-prone list (MoES, 2015)",
+    "title": "MoES reply to Lok Sabha Q251 (22 Jul 2015): cyclone-prone districts, Annexure I",
+    "url": "https://moes.gov.in/sites/default/files/LS_251_English_22_07_2015.pdf"
+   },
+   "ncrmp_1999": {
+    "short": "NCRMP cyclone history",
+    "title": "National Cyclone Risk Mitigation Project: cyclone history of Odisha",
+    "url": "https://www.ncrmp.gov.in/?p=6750"
+   },
+   "ht_atlas": {
+    "short": "IMD hazard atlas (via Hindustan Times, 2022)",
+    "title": "Hindustan Times (19 Jan 2022) on IMD's Climate Hazards and Vulnerability Atlas",
+    "url": "https://www.pressreader.com/india/hindustan-times-east-up/20220119/281741272791191"
+   },
+   "dte_biparjoy": {
+    "short": "Down To Earth (2023)",
+    "title": "Down To Earth (Jun 2023): Mundra port operations suspended for Cyclone Biparjoy",
+    "url": "https://www.downtoearth.org.in/amp/story/natural-disasters/dte-ground-report-gujarat-s-coast-from-kutch-to-bhavnagar-gears-up-to-withstand-biporjoy-landfall-89997"
+   },
+   "unb_biparjoy": {
+    "short": "AP via UNB (2023)",
+    "title": "UNB/AP (Jun 2023): winds threw shipping containers into the sea at Mundra",
+    "url": "https://unb.com.bd/news/tag/122800"
+   }
+  },
+  "references": [
+   {
+    "key": "openmeteo",
+    "title": "Open-Meteo Climate API documentation (models, downscaling, bias correction)",
+    "url": "https://open-meteo.com/en/docs/climate-api"
+   },
+   {
+    "key": "aqueduct",
+    "title": "WRI Aqueduct 4.0 data download",
+    "url": "https://www.wri.org/data/aqueduct-global-maps-40-data"
+   },
+   {
+    "key": "aqueduct_note",
+    "title": "Kuzma et al. (2023), Aqueduct 4.0 technical note",
+    "url": "https://doi.org/10.46830/writn.23.00061"
+   },
+   {
+    "key": "ipcc",
+    "title": "IPCC AR6 WGI Chapter 4: near-term projections across scenarios",
+    "url": "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-4/"
+   },
+   {
+    "key": "imd_heat",
+    "title": "IMD heat bulletin: heatwave criteria (40\u00b0C plains, 37\u00b0C coastal)",
+    "url": "https://mausam.imd.gov.in/pdfs/heatcolduser/morning_heat_bulletin.pdf"
+   },
+   {
+    "key": "imd_rain",
+    "title": "MoES reply to Rajya Sabha (Jul 2023): IMD rainfall categories",
+    "url": "https://www.moes.gov.in/sites/default/files/RS-in-25-27-07-2023.pdf"
+   },
+   {
+    "key": "imd_grid",
+    "title": "IMD 0.25\u00b0 gridded rainfall (for the planned validation)",
+    "url": "https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html"
+   },
+   {
+    "key": "natural_earth",
+    "title": "Natural Earth admin-0 countries, India point of view",
+    "url": "https://www.naturalearthdata.com/"
+   }
+  ]
+ },
+ "defaults": {
+  "heat_medium_days": 10,
+  "heat_high_days": 30,
+  "water_high_from": "High"
+ },
+ "plants": [
+  {
+   "id": "P01",
+   "name": "Nimbus Chittorgarh Works",
+   "short": "Chittorgarh",
+   "town": "Chittorgarh",
+   "state": "Rajasthan",
+   "lat": 24.8887,
+   "lon": 74.6269,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 4.0,
+   "cement_output_mt": 3.3,
+   "clinker_produced_mt": 3.43,
+   "scope1_kt": 3125.0,
+   "water_source": "Groundwater",
+   "asset_cr": 3200.0,
+   "revenue_cr": 1749.0,
+   "employees": 820,
+   "notes": "Captive limestone mine; 40 MW captive coal power plant (its emissions are in scope1); ships clinker to P07 by rail",
+   "receives_from": [],
+   "supplies_to": [
+    {
+     "id": "P07",
+     "mt": 1.12
+    }
+   ],
+   "water": {
+    "basin_id": 452482,
+    "aqueduct_state": "Rajasthan",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 10.732,
+     "category": "Extremely high",
+     "aqueduct_label": "Extremely High (>80%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 10.158,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 7.73,
+       "category": "Extremely high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 8.915,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 10.899,
+       "category": "Extremely high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 9.786,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 7.488,
+       "category": "Extremely high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "High (0.8-1.0)",
+    "riverine_flood": "Low-Medium (1 in 1,000 to 2 in 1,000)",
+    "coastal_flood": "No Risk"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 45.8,
+      "min": 26.8,
+      "max": 65.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 39.9,
+       "FGOALS_f3_H": 26.8,
+       "HiRAM_SIT_HR": 46.4,
+       "MRI_AGCM3_2_S": 65.0,
+       "EC_Earth3P_HR": 45.8,
+       "MPI_ESM1_2_XR": 46.1,
+       "NICAM16_8S": 36.7
+      }
+     },
+     "future": {
+      "median": 51.0,
+      "min": 34.3,
+      "max": 63.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 40.8,
+       "FGOALS_f3_H": 41.9,
+       "HiRAM_SIT_HR": 55.9,
+       "MRI_AGCM3_2_S": 63.6,
+       "EC_Earth3P_HR": 51.0,
+       "MPI_ESM1_2_XR": 51.3,
+       "NICAM16_8S": 34.3
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 1.2,
+      "min": 0.0,
+      "max": 2.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1.2,
+       "FGOALS_f3_H": 2.2,
+       "HiRAM_SIT_HR": 1.6,
+       "MRI_AGCM3_2_S": 0.8,
+       "EC_Earth3P_HR": 0.1,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 2.2
+      }
+     },
+     "future": {
+      "median": 1.2,
+      "min": 0.0,
+      "max": 2.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1.2,
+       "FGOALS_f3_H": 2.6,
+       "HiRAM_SIT_HR": 2.7,
+       "MRI_AGCM3_2_S": 1.0,
+       "EC_Earth3P_HR": 0.1,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 2.6
+      }
+     },
+     "models_up": 4,
+     "models_down": 1
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 82.9,
+      "min": 26.0,
+      "max": 164.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 91.6,
+       "FGOALS_f3_H": 164.6,
+       "HiRAM_SIT_HR": 101.4,
+       "MRI_AGCM3_2_S": 57.8,
+       "EC_Earth3P_HR": 30.4,
+       "MPI_ESM1_2_XR": 26.0,
+       "NICAM16_8S": 82.9
+      }
+     },
+     "future": {
+      "median": 94.2,
+      "min": 26.5,
+      "max": 209.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 94.2,
+       "FGOALS_f3_H": 209.4,
+       "HiRAM_SIT_HR": 119.3,
+       "MRI_AGCM3_2_S": 64.3,
+       "EC_Earth3P_HR": 33.2,
+       "MPI_ESM1_2_XR": 26.5,
+       "NICAM16_8S": 131.3
+      }
+     },
+     "models_up": 7,
+     "models_down": 0
+    },
+    "annual_mm": {
+     "today": {
+      "median": 650.1,
+      "min": 586.3,
+      "max": 707.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 707.0,
+       "FGOALS_f3_H": 586.3,
+       "HiRAM_SIT_HR": 624.7,
+       "MRI_AGCM3_2_S": 687.3,
+       "EC_Earth3P_HR": 650.1,
+       "MPI_ESM1_2_XR": 671.8,
+       "NICAM16_8S": 610.7
+      }
+     },
+     "future": {
+      "median": 668.3,
+      "min": 576.8,
+      "max": 705.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 623.7,
+       "FGOALS_f3_H": 576.8,
+       "HiRAM_SIT_HR": 705.7,
+       "MRI_AGCM3_2_S": 700.1,
+       "EC_Earth3P_HR": 624.0,
+       "MPI_ESM1_2_XR": 668.3,
+       "NICAM16_8S": 678.1
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "implausible_days": 13,
+    "max_day_mm": 1031,
+    "rated": false
+   },
+   "flags": []
+  },
+  {
+   "id": "P02",
+   "name": "Nimbus Satna Works",
+   "short": "Satna",
+   "town": "Satna",
+   "state": "Madhya Pradesh",
+   "lat": 24.6005,
+   "lon": 80.8322,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 3.5,
+   "cement_output_mt": 2.85,
+   "clinker_produced_mt": 2.05,
+   "scope1_kt": 1720.0,
+   "water_source": "Reservoir",
+   "asset_cr": 2700.0,
+   "revenue_cr": 1511.0,
+   "employees": 760,
+   "notes": "Captive limestone mine",
+   "receives_from": [],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 452458,
+    "aqueduct_state": "Madhya Pradesh",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.302,
+     "category": "Medium-high",
+     "aqueduct_label": "Medium-High (20-40%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.375,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.306,
+       "category": "Medium-high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.138,
+       "category": "Low-medium"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.236,
+       "category": "Medium-high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.288,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.333,
+       "category": "Medium-high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "Medium-High (0.6-0.8)",
+    "riverine_flood": "Medium-High (2 in 1,000 to 6 in 1,000)",
+    "coastal_flood": "No Risk"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 42.8,
+      "min": 33.4,
+      "max": 61.1,
+      "by_model": {
+       "CMCC_CM2_VHR4": 42.8,
+       "FGOALS_f3_H": 33.4,
+       "HiRAM_SIT_HR": 55.3,
+       "MRI_AGCM3_2_S": 61.1,
+       "EC_Earth3P_HR": 44.8,
+       "MPI_ESM1_2_XR": 41.4,
+       "NICAM16_8S": 37.8
+      }
+     },
+     "future": {
+      "median": 48.4,
+      "min": 39.1,
+      "max": 64.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 42.4,
+       "FGOALS_f3_H": 50.6,
+       "HiRAM_SIT_HR": 64.7,
+       "MRI_AGCM3_2_S": 57.7,
+       "EC_Earth3P_HR": 48.4,
+       "MPI_ESM1_2_XR": 39.1,
+       "NICAM16_8S": 44.8
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 1.6,
+      "min": 0.0,
+      "max": 4.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1.6,
+       "FGOALS_f3_H": 3.2,
+       "HiRAM_SIT_HR": 3.1,
+       "MRI_AGCM3_2_S": 0.9,
+       "EC_Earth3P_HR": 0.1,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 4.5
+      }
+     },
+     "future": {
+      "median": 2.4,
+      "min": 0.0,
+      "max": 4.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.4,
+       "FGOALS_f3_H": 4.2,
+       "HiRAM_SIT_HR": 4.1,
+       "MRI_AGCM3_2_S": 0.6,
+       "EC_Earth3P_HR": 0.0,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 4.7
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 87.0,
+      "min": 29.6,
+      "max": 227.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 87.0,
+       "FGOALS_f3_H": 227.5,
+       "HiRAM_SIT_HR": 146.9,
+       "MRI_AGCM3_2_S": 77.9,
+       "EC_Earth3P_HR": 44.3,
+       "MPI_ESM1_2_XR": 29.6,
+       "NICAM16_8S": 193.4
+      }
+     },
+     "future": {
+      "median": 167.6,
+      "min": 27.6,
+      "max": 381.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 184.8,
+       "FGOALS_f3_H": 381.6,
+       "HiRAM_SIT_HR": 167.6,
+       "MRI_AGCM3_2_S": 49.1,
+       "EC_Earth3P_HR": 40.9,
+       "MPI_ESM1_2_XR": 27.6,
+       "NICAM16_8S": 173.4
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "annual_mm": {
+     "today": {
+      "median": 1050.4,
+      "min": 995.7,
+      "max": 1122.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1033.2,
+       "FGOALS_f3_H": 995.7,
+       "HiRAM_SIT_HR": 1053.7,
+       "MRI_AGCM3_2_S": 1122.4,
+       "EC_Earth3P_HR": 1055.5,
+       "MPI_ESM1_2_XR": 1027.4,
+       "NICAM16_8S": 1050.4
+      }
+     },
+     "future": {
+      "median": 1040.4,
+      "min": 959.3,
+      "max": 1242.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1151.0,
+       "FGOALS_f3_H": 1242.6,
+       "HiRAM_SIT_HR": 1215.9,
+       "MRI_AGCM3_2_S": 1040.4,
+       "EC_Earth3P_HR": 959.3,
+       "MPI_ESM1_2_XR": 996.4,
+       "NICAM16_8S": 1028.7
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "implausible_days": 34,
+    "max_day_mm": 1104,
+    "rated": false
+   },
+   "flags": []
+  },
+  {
+   "id": "P03",
+   "name": "Nimbus Chandrapur Works",
+   "short": "Chandrapur",
+   "town": "Chandrapur",
+   "state": "Maharashtra",
+   "lat": 19.9615,
+   "lon": 79.2961,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 3.0,
+   "cement_output_mt": 2.4,
+   "clinker_produced_mt": 1.78,
+   "scope1_kt": 1510.0,
+   "water_source": "River (Wardha)",
+   "asset_cr": 2300.0,
+   "revenue_cr": 1248.0,
+   "employees": 690,
+   "notes": "30 MW waste-heat recovery system",
+   "receives_from": [],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 453465,
+    "aqueduct_state": "Maharashtra",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.244,
+     "category": "Medium-high",
+     "aqueduct_label": "Medium-High (20-40%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.268,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.202,
+       "category": "Medium-high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.253,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.278,
+       "category": "Medium-high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.338,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.236,
+       "category": "Medium-high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "Medium-High (0.6-0.8)",
+    "riverine_flood": "Medium-High (2 in 1,000 to 6 in 1,000)",
+    "coastal_flood": "No Risk"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 52.5,
+      "min": 48.1,
+      "max": 72.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 52.5,
+       "FGOALS_f3_H": 52.2,
+       "HiRAM_SIT_HR": 70.7,
+       "MRI_AGCM3_2_S": 72.7,
+       "EC_Earth3P_HR": 67.6,
+       "MPI_ESM1_2_XR": 48.1,
+       "NICAM16_8S": 50.7
+      }
+     },
+     "future": {
+      "median": 63.1,
+      "min": 33.2,
+      "max": 79.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 52.1,
+       "FGOALS_f3_H": 66.7,
+       "HiRAM_SIT_HR": 79.0,
+       "MRI_AGCM3_2_S": 69.9,
+       "EC_Earth3P_HR": 63.1,
+       "MPI_ESM1_2_XR": 33.2,
+       "NICAM16_8S": 61.7
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 2.2,
+      "min": 0.1,
+      "max": 5.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1.4,
+       "FGOALS_f3_H": 5.8,
+       "HiRAM_SIT_HR": 2.4,
+       "MRI_AGCM3_2_S": 2.2,
+       "EC_Earth3P_HR": 0.9,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 4.6
+      }
+     },
+     "future": {
+      "median": 2.5,
+      "min": 0.4,
+      "max": 4.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.1,
+       "FGOALS_f3_H": 4.6,
+       "HiRAM_SIT_HR": 3.6,
+       "MRI_AGCM3_2_S": 2.5,
+       "EC_Earth3P_HR": 1.0,
+       "MPI_ESM1_2_XR": 0.4,
+       "NICAM16_8S": 4.5
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 119.8,
+      "min": 36.6,
+      "max": 390.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 80.6,
+       "FGOALS_f3_H": 390.5,
+       "HiRAM_SIT_HR": 119.8,
+       "MRI_AGCM3_2_S": 152.1,
+       "EC_Earth3P_HR": 65.5,
+       "MPI_ESM1_2_XR": 36.6,
+       "NICAM16_8S": 144.8
+      }
+     },
+     "future": {
+      "median": 157.1,
+      "min": 54.0,
+      "max": 307.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 100.2,
+       "FGOALS_f3_H": 307.0,
+       "HiRAM_SIT_HR": 157.1,
+       "MRI_AGCM3_2_S": 204.8,
+       "EC_Earth3P_HR": 71.8,
+       "MPI_ESM1_2_XR": 54.0,
+       "NICAM16_8S": 202.2
+      }
+     },
+     "models_up": 6,
+     "models_down": 1
+    },
+    "annual_mm": {
+     "today": {
+      "median": 1182.8,
+      "min": 1040.5,
+      "max": 1427.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1121.5,
+       "FGOALS_f3_H": 1427.4,
+       "HiRAM_SIT_HR": 1040.5,
+       "MRI_AGCM3_2_S": 1250.0,
+       "EC_Earth3P_HR": 1274.7,
+       "MPI_ESM1_2_XR": 1182.8,
+       "NICAM16_8S": 1134.2
+      }
+     },
+     "future": {
+      "median": 1158.7,
+      "min": 1099.8,
+      "max": 1377.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1111.0,
+       "FGOALS_f3_H": 1153.7,
+       "HiRAM_SIT_HR": 1099.8,
+       "MRI_AGCM3_2_S": 1377.9,
+       "EC_Earth3P_HR": 1282.8,
+       "MPI_ESM1_2_XR": 1323.2,
+       "NICAM16_8S": 1158.7
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    },
+    "implausible_days": 41,
+    "max_day_mm": 644,
+    "rated": false
+   },
+   "flags": []
+  },
+  {
+   "id": "P04",
+   "name": "Nimbus Nalgonda Works",
+   "short": "Nalgonda",
+   "town": "Nalgonda",
+   "state": "Telangana",
+   "lat": 17.0575,
+   "lon": 79.2671,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 2.5,
+   "cement_output_mt": 1.85,
+   "clinker_produced_mt": 1.22,
+   "scope1_kt": 1025.0,
+   "water_source": "Groundwater",
+   "asset_cr": 1800.0,
+   "revenue_cr": 999.0,
+   "employees": 540,
+   "notes": "",
+   "receives_from": [],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 453630,
+    "aqueduct_state": "Telangana",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 3.414,
+     "category": "Extremely high",
+     "aqueduct_label": "Extremely High (>80%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 2.832,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 2.711,
+       "category": "Extremely high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 2.991,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 2.934,
+       "category": "Extremely high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 3.159,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 3.028,
+       "category": "Extremely high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "Medium-High (0.6-0.8)",
+    "riverine_flood": "Low-Medium (1 in 1,000 to 2 in 1,000)",
+    "coastal_flood": "No Risk"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 43.0,
+      "min": 29.1,
+      "max": 50.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 34.8,
+       "FGOALS_f3_H": 29.1,
+       "HiRAM_SIT_HR": 43.0,
+       "MRI_AGCM3_2_S": 50.8,
+       "EC_Earth3P_HR": 45.8,
+       "MPI_ESM1_2_XR": 44.9,
+       "NICAM16_8S": 29.2
+      }
+     },
+     "future": {
+      "median": 42.8,
+      "min": 25.0,
+      "max": 59.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 36.9,
+       "FGOALS_f3_H": 41.4,
+       "HiRAM_SIT_HR": 56.6,
+       "MRI_AGCM3_2_S": 59.2,
+       "EC_Earth3P_HR": 42.8,
+       "MPI_ESM1_2_XR": 47.7,
+       "NICAM16_8S": 25.0
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 1.1,
+      "min": 0.0,
+      "max": 3.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.7,
+       "FGOALS_f3_H": 3.0,
+       "HiRAM_SIT_HR": 1.9,
+       "MRI_AGCM3_2_S": 1.1,
+       "EC_Earth3P_HR": 0.2,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 2.8
+      }
+     },
+     "future": {
+      "median": 0.9,
+      "min": 0.1,
+      "max": 4.1,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.8,
+       "FGOALS_f3_H": 2.8,
+       "HiRAM_SIT_HR": 1.4,
+       "MRI_AGCM3_2_S": 0.9,
+       "EC_Earth3P_HR": 0.8,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 4.1
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 103.3,
+      "min": 25.2,
+      "max": 156.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 61.8,
+       "FGOALS_f3_H": 156.9,
+       "HiRAM_SIT_HR": 114.9,
+       "MRI_AGCM3_2_S": 103.3,
+       "EC_Earth3P_HR": 47.5,
+       "MPI_ESM1_2_XR": 25.2,
+       "NICAM16_8S": 112.4
+      }
+     },
+     "future": {
+      "median": 84.9,
+      "min": 31.9,
+      "max": 159.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 70.5,
+       "FGOALS_f3_H": 148.0,
+       "HiRAM_SIT_HR": 105.9,
+       "MRI_AGCM3_2_S": 84.9,
+       "EC_Earth3P_HR": 66.2,
+       "MPI_ESM1_2_XR": 31.9,
+       "NICAM16_8S": 159.9
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "annual_mm": {
+     "today": {
+      "median": 831.3,
+      "min": 750.2,
+      "max": 872.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 834.1,
+       "FGOALS_f3_H": 811.6,
+       "HiRAM_SIT_HR": 872.9,
+       "MRI_AGCM3_2_S": 872.6,
+       "EC_Earth3P_HR": 831.3,
+       "MPI_ESM1_2_XR": 750.2,
+       "NICAM16_8S": 776.6
+      }
+     },
+     "future": {
+      "median": 800.7,
+      "min": 772.5,
+      "max": 1037.3,
+      "by_model": {
+       "CMCC_CM2_VHR4": 788.4,
+       "FGOALS_f3_H": 800.7,
+       "HiRAM_SIT_HR": 774.2,
+       "MRI_AGCM3_2_S": 824.9,
+       "EC_Earth3P_HR": 952.0,
+       "MPI_ESM1_2_XR": 772.5,
+       "NICAM16_8S": 1037.3
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "implausible_days": 10,
+    "max_day_mm": 757,
+    "rated": false
+   },
+   "flags": []
+  },
+  {
+   "id": "P05",
+   "name": "Nimbus Ariyalur Works",
+   "short": "Ariyalur",
+   "town": "Ariyalur",
+   "state": "Tamil Nadu",
+   "lat": 11.1401,
+   "lon": 79.0786,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 2.0,
+   "cement_output_mt": 1.55,
+   "clinker_produced_mt": 1.12,
+   "scope1_kt": 1005.0,
+   "water_source": "Groundwater",
+   "asset_cr": 1500.0,
+   "revenue_cr": 868.0,
+   "employees": 480,
+   "notes": "Oldest kiln (1998)",
+   "receives_from": [],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 453801,
+    "aqueduct_state": "Tamil Nadu",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.262,
+     "category": "Medium-high",
+     "aqueduct_label": "Medium-High (20-40%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.322,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.315,
+       "category": "Medium-high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.254,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.425,
+       "category": "High"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.283,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.324,
+       "category": "Medium-high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "High (0.8-1.0)",
+    "riverine_flood": "High (6 in 1,000 to 1 in 100)",
+    "coastal_flood": "Low (0 to 9 in 1,000,000)"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 30.8,
+      "min": 18.9,
+      "max": 41.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 24.1,
+       "FGOALS_f3_H": 30.8,
+       "HiRAM_SIT_HR": 35.4,
+       "MRI_AGCM3_2_S": 41.6,
+       "EC_Earth3P_HR": 30.8,
+       "MPI_ESM1_2_XR": 18.9,
+       "NICAM16_8S": 30.2
+      }
+     },
+     "future": {
+      "median": 32.9,
+      "min": 25.8,
+      "max": 56.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 29.5,
+       "FGOALS_f3_H": 34.5,
+       "HiRAM_SIT_HR": 56.6,
+       "MRI_AGCM3_2_S": 51.6,
+       "EC_Earth3P_HR": 31.9,
+       "MPI_ESM1_2_XR": 25.8,
+       "NICAM16_8S": 32.9
+      }
+     },
+     "models_up": 7,
+     "models_down": 0
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 0.6,
+      "min": 0.0,
+      "max": 2.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.2,
+       "FGOALS_f3_H": 2.2,
+       "HiRAM_SIT_HR": 2.4,
+       "MRI_AGCM3_2_S": 0.6,
+       "EC_Earth3P_HR": 0.0,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 2.2
+      }
+     },
+     "future": {
+      "median": 0.7,
+      "min": 0.2,
+      "max": 4.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.7,
+       "FGOALS_f3_H": 1.7,
+       "HiRAM_SIT_HR": 1.9,
+       "MRI_AGCM3_2_S": 0.7,
+       "EC_Earth3P_HR": 0.2,
+       "MPI_ESM1_2_XR": 0.4,
+       "NICAM16_8S": 4.2
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 67.7,
+      "min": 42.5,
+      "max": 116.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 53.3,
+       "FGOALS_f3_H": 107.3,
+       "HiRAM_SIT_HR": 95.5,
+       "MRI_AGCM3_2_S": 67.7,
+       "EC_Earth3P_HR": 44.8,
+       "MPI_ESM1_2_XR": 42.5,
+       "NICAM16_8S": 116.5
+      }
+     },
+     "future": {
+      "median": 65.8,
+      "min": 43.2,
+      "max": 140.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 65.8,
+       "FGOALS_f3_H": 111.8,
+       "HiRAM_SIT_HR": 101.3,
+       "MRI_AGCM3_2_S": 50.3,
+       "EC_Earth3P_HR": 43.2,
+       "MPI_ESM1_2_XR": 52.5,
+       "NICAM16_8S": 140.8
+      }
+     },
+     "models_up": 5,
+     "models_down": 2
+    },
+    "annual_mm": {
+     "today": {
+      "median": 820.0,
+      "min": 651.9,
+      "max": 882.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 856.7,
+       "FGOALS_f3_H": 808.4,
+       "HiRAM_SIT_HR": 871.2,
+       "MRI_AGCM3_2_S": 820.0,
+       "EC_Earth3P_HR": 882.2,
+       "MPI_ESM1_2_XR": 651.9,
+       "NICAM16_8S": 802.8
+      }
+     },
+     "future": {
+      "median": 850.6,
+      "min": 686.0,
+      "max": 911.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 911.6,
+       "FGOALS_f3_H": 700.2,
+       "HiRAM_SIT_HR": 850.6,
+       "MRI_AGCM3_2_S": 883.3,
+       "EC_Earth3P_HR": 850.4,
+       "MPI_ESM1_2_XR": 686.0,
+       "NICAM16_8S": 907.5
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "implausible_days": 0,
+    "max_day_mm": 258,
+    "rated": false
+   },
+   "flags": [
+    {
+     "type": "river_flood",
+     "title": "River flood: current exposure",
+     "points": [
+      "WRI Aqueduct riverine flood risk is High: about 6 in 1,000 to 1 in 100 people affected by river flooding in an average year."
+     ],
+     "sources": [
+      "aqueduct"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "P06",
+   "name": "Nimbus Baloda Bazar Works",
+   "short": "Baloda Bazar",
+   "town": "Baloda Bazar",
+   "state": "Chhattisgarh",
+   "lat": 21.6566,
+   "lon": 82.1606,
+   "type": "Integrated",
+   "coastal": false,
+   "capacity_mtpa": 3.0,
+   "cement_output_mt": 2.55,
+   "clinker_produced_mt": 3.01,
+   "scope1_kt": 2470.0,
+   "water_source": "Canal (Mahanadi system)",
+   "asset_cr": 2350.0,
+   "revenue_cr": 1275.0,
+   "employees": 700,
+   "notes": "Newest kiln (2022); ships clinker to P08 (0.68 Mt) and P09 (0.60 Mt)",
+   "receives_from": [],
+   "supplies_to": [
+    {
+     "id": "P08",
+     "mt": 0.68
+    },
+    {
+     "id": "P09",
+     "mt": 0.6
+    }
+   ],
+   "water": {
+    "basin_id": 453291,
+    "aqueduct_state": "Chhattisgarh",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.726,
+     "category": "High",
+     "aqueduct_label": "High (40-80%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.639,
+       "category": "High"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.579,
+       "category": "High"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.578,
+       "category": "High"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.6,
+       "category": "High"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.592,
+       "category": "High"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.597,
+       "category": "High"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "Medium (0.4-0.6)",
+    "riverine_flood": "Low-Medium (1 in 1,000 to 2 in 1,000)",
+    "coastal_flood": "No Risk"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 48.8,
+      "min": 38.2,
+      "max": 67.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 44.2,
+       "FGOALS_f3_H": 48.8,
+       "HiRAM_SIT_HR": 61.8,
+       "MRI_AGCM3_2_S": 67.4,
+       "EC_Earth3P_HR": 58.2,
+       "MPI_ESM1_2_XR": 38.2,
+       "NICAM16_8S": 44.2
+      }
+     },
+     "future": {
+      "median": 54.8,
+      "min": 23.6,
+      "max": 71.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 43.6,
+       "FGOALS_f3_H": 60.9,
+       "HiRAM_SIT_HR": 71.9,
+       "MRI_AGCM3_2_S": 60.7,
+       "EC_Earth3P_HR": 53.0,
+       "MPI_ESM1_2_XR": 23.6,
+       "NICAM16_8S": 54.8
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 2.4,
+      "min": 0.1,
+      "max": 6.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.4,
+       "FGOALS_f3_H": 5.4,
+       "HiRAM_SIT_HR": 4.5,
+       "MRI_AGCM3_2_S": 1.2,
+       "EC_Earth3P_HR": 0.3,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 6.0
+      }
+     },
+     "future": {
+      "median": 2.3,
+      "min": 0.2,
+      "max": 6.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.3,
+       "FGOALS_f3_H": 6.2,
+       "HiRAM_SIT_HR": 4.0,
+       "MRI_AGCM3_2_S": 1.5,
+       "EC_Earth3P_HR": 0.6,
+       "MPI_ESM1_2_XR": 0.2,
+       "NICAM16_8S": 5.3
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 105.3,
+      "min": 42.8,
+      "max": 278.3,
+      "by_model": {
+       "CMCC_CM2_VHR4": 105.3,
+       "FGOALS_f3_H": 278.3,
+       "HiRAM_SIT_HR": 151.5,
+       "MRI_AGCM3_2_S": 82.7,
+       "EC_Earth3P_HR": 52.1,
+       "MPI_ESM1_2_XR": 42.8,
+       "NICAM16_8S": 174.4
+      }
+     },
+     "future": {
+      "median": 133.0,
+      "min": 49.8,
+      "max": 481.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 133.0,
+       "FGOALS_f3_H": 481.2,
+       "HiRAM_SIT_HR": 152.9,
+       "MRI_AGCM3_2_S": 114.8,
+       "EC_Earth3P_HR": 60.1,
+       "MPI_ESM1_2_XR": 49.8,
+       "NICAM16_8S": 159.7
+      }
+     },
+     "models_up": 6,
+     "models_down": 1
+    },
+    "annual_mm": {
+     "today": {
+      "median": 1362.4,
+      "min": 1324.4,
+      "max": 1464.0,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1356.4,
+       "FGOALS_f3_H": 1362.4,
+       "HiRAM_SIT_HR": 1324.4,
+       "MRI_AGCM3_2_S": 1419.1,
+       "EC_Earth3P_HR": 1434.3,
+       "MPI_ESM1_2_XR": 1464.0,
+       "NICAM16_8S": 1347.3
+      }
+     },
+     "future": {
+      "median": 1472.4,
+      "min": 1107.1,
+      "max": 1770.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1343.5,
+       "FGOALS_f3_H": 1770.7,
+       "HiRAM_SIT_HR": 1315.2,
+       "MRI_AGCM3_2_S": 1601.5,
+       "EC_Earth3P_HR": 1472.4,
+       "MPI_ESM1_2_XR": 1554.6,
+       "NICAM16_8S": 1107.1
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "implausible_days": 53,
+    "max_day_mm": 1248,
+    "rated": false
+   },
+   "flags": []
+  },
+  {
+   "id": "P07",
+   "name": "Nimbus Mundra Grinding Unit",
+   "short": "Mundra",
+   "town": "Mundra",
+   "state": "Gujarat",
+   "lat": 22.839,
+   "lon": 69.7219,
+   "type": "Grinding unit",
+   "coastal": true,
+   "capacity_mtpa": 2.0,
+   "cement_output_mt": 1.6,
+   "clinker_produced_mt": 0.0,
+   "scope1_kt": 32.0,
+   "water_source": "Desalinated seawater",
+   "asset_cr": 650.0,
+   "revenue_cr": 848.0,
+   "employees": 210,
+   "notes": "Gets 1.12 Mt clinker a year from P01 by rail",
+   "receives_from": [
+    {
+     "id": "P01",
+     "mt": 1.12
+    }
+   ],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 455700,
+    "aqueduct_state": "Gujarat",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 7.721,
+     "category": "Extremely high",
+     "aqueduct_label": "Extremely High (>80%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 7.242,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 5.917,
+       "category": "Extremely high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 6.876,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 6.25,
+       "category": "Extremely high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 6.932,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 6.457,
+       "category": "Extremely high"
+      }
+     }
+    },
+    "groundwater_trend": "Insignificant Trend",
+    "drought_risk": "No Data",
+    "riverine_flood": "Low-Medium (1 in 1,000 to 2 in 1,000)",
+    "coastal_flood": "High (3 in 10,000 to 2 in 1,000)",
+    "supply_note": "Runs on desalinated seawater, so its own water supply is largely shielded from basin stress. It remains exposed through its clinker supplier."
+   },
+   "heat": {
+    "threshold_c": 37.0,
+    "basis": "coastal",
+    "days": {
+     "today": {
+      "median": 33.2,
+      "min": 21.9,
+      "max": 48.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 47.0,
+       "FGOALS_f3_H": 21.9,
+       "HiRAM_SIT_HR": 24.5,
+       "MRI_AGCM3_2_S": 48.6,
+       "EC_Earth3P_HR": 33.2,
+       "MPI_ESM1_2_XR": 38.3,
+       "NICAM16_8S": 31.4
+      }
+     },
+     "future": {
+      "median": 38.9,
+      "min": 35.0,
+      "max": 61.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 51.1,
+       "FGOALS_f3_H": 35.0,
+       "HiRAM_SIT_HR": 35.5,
+       "MRI_AGCM3_2_S": 61.6,
+       "EC_Earth3P_HR": 38.9,
+       "MPI_ESM1_2_XR": 42.8,
+       "NICAM16_8S": 37.9
+      }
+     },
+     "models_up": 7,
+     "models_down": 0
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 0.4,
+      "min": 0.0,
+      "max": 1.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.4,
+       "FGOALS_f3_H": 1.2,
+       "HiRAM_SIT_HR": 1.2,
+       "MRI_AGCM3_2_S": 0.4,
+       "EC_Earth3P_HR": 0.1,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 1.1
+      }
+     },
+     "future": {
+      "median": 0.9,
+      "min": 0.0,
+      "max": 1.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 0.9,
+       "FGOALS_f3_H": 1.1,
+       "HiRAM_SIT_HR": 1.5,
+       "MRI_AGCM3_2_S": 0.5,
+       "EC_Earth3P_HR": 0.6,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 1.2
+      }
+     },
+     "models_up": 5,
+     "models_down": 1
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 46.8,
+      "min": 28.0,
+      "max": 108.5,
+      "by_model": {
+       "CMCC_CM2_VHR4": 46.8,
+       "FGOALS_f3_H": 108.5,
+       "HiRAM_SIT_HR": 83.1,
+       "MRI_AGCM3_2_S": 32.0,
+       "EC_Earth3P_HR": 36.7,
+       "MPI_ESM1_2_XR": 28.0,
+       "NICAM16_8S": 54.0
+      }
+     },
+     "future": {
+      "median": 67.2,
+      "min": 31.8,
+      "max": 97.2,
+      "by_model": {
+       "CMCC_CM2_VHR4": 67.2,
+       "FGOALS_f3_H": 95.7,
+       "HiRAM_SIT_HR": 97.2,
+       "MRI_AGCM3_2_S": 33.9,
+       "EC_Earth3P_HR": 52.8,
+       "MPI_ESM1_2_XR": 31.8,
+       "NICAM16_8S": 89.2
+      }
+     },
+     "models_up": 6,
+     "models_down": 1
+    },
+    "annual_mm": {
+     "today": {
+      "median": 358.4,
+      "min": 329.9,
+      "max": 431.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 358.4,
+       "FGOALS_f3_H": 355.0,
+       "HiRAM_SIT_HR": 330.9,
+       "MRI_AGCM3_2_S": 329.9,
+       "EC_Earth3P_HR": 431.8,
+       "MPI_ESM1_2_XR": 417.0,
+       "NICAM16_8S": 382.5
+      }
+     },
+     "future": {
+      "median": 385.2,
+      "min": 302.7,
+      "max": 494.1,
+      "by_model": {
+       "CMCC_CM2_VHR4": 441.4,
+       "FGOALS_f3_H": 302.7,
+       "HiRAM_SIT_HR": 367.5,
+       "MRI_AGCM3_2_S": 334.9,
+       "EC_Earth3P_HR": 494.1,
+       "MPI_ESM1_2_XR": 453.5,
+       "NICAM16_8S": 385.2
+      }
+     },
+     "models_up": 6,
+     "models_down": 1
+    },
+    "implausible_days": 6,
+    "max_day_mm": 424,
+    "rated": false
+   },
+   "flags": [
+    {
+     "type": "coastal_storm",
+     "title": "Coastal storm: current exposure",
+     "points": [
+      "Kachchh district sees recurring severe cyclones every 4 to 10 years (IMD Climate Hazards and Vulnerability Atlas, as reported).",
+      "Cyclone Biparjoy, June 2023: landfall near Jakhau, about 100 km away. Mundra port operations were suspended and containers were blown into the sea.",
+      "WRI Aqueduct coastal flood risk: High (3 in 10,000 to 2 in 1,000)."
+     ],
+     "sources": [
+      "ht_atlas",
+      "dte_biparjoy",
+      "unb_biparjoy"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "P08",
+   "name": "Nimbus Paradip Grinding Unit",
+   "short": "Paradip",
+   "town": "Paradip",
+   "state": "Odisha",
+   "lat": 20.3165,
+   "lon": 86.6114,
+   "type": "Grinding unit",
+   "coastal": true,
+   "capacity_mtpa": 1.5,
+   "cement_output_mt": 1.05,
+   "clinker_produced_mt": 0.0,
+   "scope1_kt": 21.0,
+   "water_source": "Municipal supply",
+   "asset_cr": 480.0,
+   "revenue_cr": 536.0,
+   "employees": 180,
+   "notes": "Gets 0.68 Mt clinker a year from P06; blends fly ash from nearby power plants",
+   "receives_from": [
+    {
+     "id": "P06",
+     "mt": 0.68
+    }
+   ],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 453210,
+    "aqueduct_state": "Odisha",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.226,
+     "category": "Medium-high",
+     "aqueduct_label": "Medium-High (20-40%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.23,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.206,
+       "category": "Medium-high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.209,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.21,
+       "category": "Medium-high"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.223,
+       "category": "Medium-high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.213,
+       "category": "Medium-high"
+      }
+     }
+    },
+    "groundwater_trend": "Medium-High (2-4 cm/y)",
+    "drought_risk": "Medium-High (0.6-0.8)",
+    "riverine_flood": "High (6 in 1,000 to 1 in 100)",
+    "coastal_flood": "Medium-High (7 in 100,000 to 3 in 10,000)"
+   },
+   "heat": {
+    "threshold_c": 37.0,
+    "basis": "coastal",
+    "days": {
+     "today": {
+      "median": 11.7,
+      "min": 0.1,
+      "max": 24.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 13.5,
+       "FGOALS_f3_H": 11.7,
+       "HiRAM_SIT_HR": 4.6,
+       "MRI_AGCM3_2_S": 12.8,
+       "EC_Earth3P_HR": 24.9,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 8.8
+      }
+     },
+     "future": {
+      "median": 11.5,
+      "min": 0.1,
+      "max": 23.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 11.5,
+       "FGOALS_f3_H": 14.2,
+       "HiRAM_SIT_HR": 4.6,
+       "MRI_AGCM3_2_S": 14.8,
+       "EC_Earth3P_HR": 23.6,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 8.0
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 2.6,
+      "min": 1.1,
+      "max": 6.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.3,
+       "FGOALS_f3_H": 5.4,
+       "HiRAM_SIT_HR": 4.2,
+       "MRI_AGCM3_2_S": 2.6,
+       "EC_Earth3P_HR": 1.1,
+       "MPI_ESM1_2_XR": 2.5,
+       "NICAM16_8S": 6.9
+      }
+     },
+     "future": {
+      "median": 2.9,
+      "min": 0.9,
+      "max": 6.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.2,
+       "FGOALS_f3_H": 5.7,
+       "HiRAM_SIT_HR": 4.0,
+       "MRI_AGCM3_2_S": 1.1,
+       "EC_Earth3P_HR": 0.9,
+       "MPI_ESM1_2_XR": 2.9,
+       "NICAM16_8S": 6.7
+      }
+     },
+     "models_up": 2,
+     "models_down": 5
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 127.4,
+      "min": 61.6,
+      "max": 326.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 127.4,
+       "FGOALS_f3_H": 326.9,
+       "HiRAM_SIT_HR": 220.7,
+       "MRI_AGCM3_2_S": 86.8,
+       "EC_Earth3P_HR": 61.6,
+       "MPI_ESM1_2_XR": 81.2,
+       "NICAM16_8S": 255.3
+      }
+     },
+     "future": {
+      "median": 126.5,
+      "min": 72.8,
+      "max": 293.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 126.5,
+       "FGOALS_f3_H": 293.6,
+       "HiRAM_SIT_HR": 243.2,
+       "MRI_AGCM3_2_S": 72.8,
+       "EC_Earth3P_HR": 74.9,
+       "MPI_ESM1_2_XR": 90.9,
+       "NICAM16_8S": 277.9
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    },
+    "annual_mm": {
+     "today": {
+      "median": 1509.5,
+      "min": 1446.1,
+      "max": 1631.9,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1491.9,
+       "FGOALS_f3_H": 1548.2,
+       "HiRAM_SIT_HR": 1446.1,
+       "MRI_AGCM3_2_S": 1574.1,
+       "EC_Earth3P_HR": 1631.9,
+       "MPI_ESM1_2_XR": 1509.5,
+       "NICAM16_8S": 1472.0
+      }
+     },
+     "future": {
+      "median": 1534.3,
+      "min": 1349.5,
+      "max": 1687.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1590.6,
+       "FGOALS_f3_H": 1528.9,
+       "HiRAM_SIT_HR": 1349.5,
+       "MRI_AGCM3_2_S": 1368.6,
+       "EC_Earth3P_HR": 1580.2,
+       "MPI_ESM1_2_XR": 1687.6,
+       "NICAM16_8S": 1534.3
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "implausible_days": 57,
+    "max_day_mm": 868,
+    "rated": false
+   },
+   "flags": [
+    {
+     "type": "coastal_storm",
+     "title": "Coastal storm: current exposure",
+     "points": [
+      "Jagatsinghpur district is classed 'very highly prone' to cyclones, one of 12 such districts in India (IMD classification).",
+      "1999 Super Cyclone made landfall near Paradip, with winds of 260 km/h and a 6 to 7 m storm surge.",
+      "WRI Aqueduct coastal flood risk: Medium-High (7 in 100,000 to 3 in 10,000)."
+     ],
+     "sources": [
+      "moes_cyclone_list",
+      "ncrmp_1999"
+     ]
+    },
+    {
+     "type": "river_flood",
+     "title": "River flood: current exposure",
+     "points": [
+      "WRI Aqueduct riverine flood risk is High: about 6 in 1,000 to 1 in 100 people affected by river flooding in an average year."
+     ],
+     "sources": [
+      "aqueduct"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "P09",
+   "name": "Nimbus Durgapur Grinding Unit",
+   "short": "Durgapur",
+   "town": "Durgapur",
+   "state": "West Bengal",
+   "lat": 23.5204,
+   "lon": 87.3119,
+   "type": "Grinding unit",
+   "coastal": false,
+   "capacity_mtpa": 1.5,
+   "cement_output_mt": 1.2,
+   "clinker_produced_mt": 0.0,
+   "scope1_kt": 24.0,
+   "water_source": "River (Damodar)",
+   "asset_cr": 470.0,
+   "revenue_cr": 624.0,
+   "employees": 170,
+   "notes": "Gets 0.60 Mt clinker a year from P06; makes slag cement with steel slag",
+   "receives_from": [
+    {
+     "id": "P06",
+     "mt": 0.6
+    }
+   ],
+   "supplies_to": [],
+   "water": {
+    "basin_id": 453145,
+    "aqueduct_state": "West Bengal",
+    "baseline": {
+     "period": "1979-2019",
+     "raw": 0.75,
+     "category": "High",
+     "aqueduct_label": "High (40-80%)"
+    },
+    "future": {
+     "opt": {
+      "name": "Optimistic (SSP1-2.6)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.884,
+       "category": "Extremely high"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.814,
+       "category": "Extremely high"
+      }
+     },
+     "bau": {
+      "name": "Business as usual (SSP3-7.0)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.706,
+       "category": "High"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.779,
+       "category": "High"
+      }
+     },
+     "pes": {
+      "name": "Pessimistic (SSP5-8.5)",
+      "p2030": {
+       "period": "2015-2045",
+       "raw": 0.722,
+       "category": "High"
+      },
+      "p2050": {
+       "period": "2035-2065",
+       "raw": 0.754,
+       "category": "High"
+      }
+     }
+    },
+    "groundwater_trend": "Medium-High (2-4 cm/y)",
+    "drought_risk": "Medium-High (0.6-0.8)",
+    "riverine_flood": "High (6 in 1,000 to 1 in 100)",
+    "coastal_flood": "Low-Medium (9 in 1,000,000 to 7 in 100,000)"
+   },
+   "heat": {
+    "threshold_c": 40.0,
+    "basis": "inland",
+    "days": {
+     "today": {
+      "median": 24.3,
+      "min": 11.8,
+      "max": 35.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 23.1,
+       "FGOALS_f3_H": 25.1,
+       "HiRAM_SIT_HR": 35.4,
+       "MRI_AGCM3_2_S": 33.4,
+       "EC_Earth3P_HR": 24.3,
+       "MPI_ESM1_2_XR": 11.9,
+       "NICAM16_8S": 11.8
+      }
+     },
+     "future": {
+      "median": 20.1,
+      "min": 6.9,
+      "max": 45.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 19.4,
+       "FGOALS_f3_H": 35.7,
+       "HiRAM_SIT_HR": 45.4,
+       "MRI_AGCM3_2_S": 41.7,
+       "EC_Earth3P_HR": 20.1,
+       "MPI_ESM1_2_XR": 6.9,
+       "NICAM16_8S": 16.5
+      }
+     },
+     "models_up": 4,
+     "models_down": 3
+    }
+   },
+   "rain": {
+    "heavy_days": {
+     "today": {
+      "median": 1.6,
+      "min": 0.0,
+      "max": 6.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1.6,
+       "FGOALS_f3_H": 5.9,
+       "HiRAM_SIT_HR": 5.0,
+       "MRI_AGCM3_2_S": 1.0,
+       "EC_Earth3P_HR": 0.8,
+       "MPI_ESM1_2_XR": 0.0,
+       "NICAM16_8S": 6.6
+      }
+     },
+     "future": {
+      "median": 2.2,
+      "min": 0.1,
+      "max": 5.6,
+      "by_model": {
+       "CMCC_CM2_VHR4": 2.2,
+       "FGOALS_f3_H": 5.6,
+       "HiRAM_SIT_HR": 4.4,
+       "MRI_AGCM3_2_S": 0.8,
+       "EC_Earth3P_HR": 0.8,
+       "MPI_ESM1_2_XR": 0.1,
+       "NICAM16_8S": 5.6
+      }
+     },
+     "models_up": 2,
+     "models_down": 4
+    },
+    "wettest_day_mm": {
+     "today": {
+      "median": 99.6,
+      "min": 36.1,
+      "max": 256.4,
+      "by_model": {
+       "CMCC_CM2_VHR4": 99.6,
+       "FGOALS_f3_H": 256.4,
+       "HiRAM_SIT_HR": 149.8,
+       "MRI_AGCM3_2_S": 66.3,
+       "EC_Earth3P_HR": 56.4,
+       "MPI_ESM1_2_XR": 36.1,
+       "NICAM16_8S": 231.4
+      }
+     },
+     "future": {
+      "median": 77.0,
+      "min": 42.3,
+      "max": 225.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 77.0,
+       "FGOALS_f3_H": 196.6,
+       "HiRAM_SIT_HR": 164.7,
+       "MRI_AGCM3_2_S": 53.4,
+       "EC_Earth3P_HR": 58.1,
+       "MPI_ESM1_2_XR": 42.3,
+       "NICAM16_8S": 225.8
+      }
+     },
+     "models_up": 3,
+     "models_down": 4
+    },
+    "annual_mm": {
+     "today": {
+      "median": 1408.4,
+      "min": 1308.5,
+      "max": 1496.8,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1311.0,
+       "FGOALS_f3_H": 1408.4,
+       "HiRAM_SIT_HR": 1496.8,
+       "MRI_AGCM3_2_S": 1457.3,
+       "EC_Earth3P_HR": 1463.9,
+       "MPI_ESM1_2_XR": 1308.5,
+       "NICAM16_8S": 1373.4
+      }
+     },
+     "future": {
+      "median": 1351.9,
+      "min": 1326.5,
+      "max": 1451.7,
+      "by_model": {
+       "CMCC_CM2_VHR4": 1407.7,
+       "FGOALS_f3_H": 1351.9,
+       "HiRAM_SIT_HR": 1451.7,
+       "MRI_AGCM3_2_S": 1340.0,
+       "EC_Earth3P_HR": 1382.5,
+       "MPI_ESM1_2_XR": 1326.5,
+       "NICAM16_8S": 1339.0
+      }
+     },
+     "models_up": 2,
+     "models_down": 5
+    },
+    "implausible_days": 29,
+    "max_day_mm": 725,
+    "rated": false
+   },
+   "flags": [
+    {
+     "type": "river_flood",
+     "title": "River flood: current exposure",
+     "points": [
+      "WRI Aqueduct riverine flood risk is High: about 6 in 1,000 to 1 in 100 people affected by river flooding in an average year."
+     ],
+     "sources": [
+      "aqueduct"
+     ]
+    }
+   ]
+  }
+ ]
+}

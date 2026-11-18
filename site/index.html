@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%227%22 fill=%22%23d03b3b%22/%3E%3C/svg%3E">
+<title>Nimbus Cement · Physical climate exposure (prototype)</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f5f8f9;
+  --surface: #fcfdfd;
+  --ink: #0d1a1f;
+  --ink-2: #48555c;
+  --muted: #67737a;
+  --grid: #e2e8eb;
+  --axis: #c3cdd2;
+  --border: rgba(13,40,50,0.11);
+  --accent: #1d6f8f;
+  --accent-ink: #155e7a;
+  --high: #c8372d;
+  --medium: #8fb2b8;
+  --low: #dbe7e9;
+  --model-dot: #7d8a90;
+  --radius: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font-size: 15px; line-height: 1.5; }
+a { color: var(--accent-ink); }
+button { font: inherit; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header.top { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; }
+@media (max-width: 700px) { header.top { position: static; } h1 { font-size: 22px; } }
+.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 60px; flex-wrap: wrap; }
+.brand { font-weight: 650; letter-spacing: -0.01em; }
+.brand small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; letter-spacing: 0; }
+nav.tabs { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
+nav.tabs a { text-decoration: none; color: var(--ink-2); padding: 6px 12px; border-radius: 8px; font-size: 14px; }
+nav.tabs a:hover { background: #eaf0f2; }
+nav.tabs a[aria-current="page"] { background: #e1eef2; color: var(--accent-ink); font-weight: 600; }
+.btn { border: 1px solid var(--axis); background: var(--surface); border-radius: 8px; padding: 6px 12px; cursor: pointer; color: var(--ink); font-size: 14px; }
+.btn:hover { background: #e9eff1; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { background: var(--accent-ink); }
+
+.proto-note { background: #e9eff1; color: var(--ink-2); font-size: 12.5px; border-bottom: 1px solid var(--border); }
+.proto-note .wrap { padding-top: 6px; padding-bottom: 6px; }
+.custom-banner { display: none; background: #fff4d6; border-bottom: 1px solid #f0d58a; font-size: 14px; }
+.custom-banner .wrap { padding-top: 8px; padding-bottom: 8px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+body.custom .custom-banner { display: block; }
+
+main { padding: 28px 0 64px; }
+h1 { font-size: 26px; line-height: 1.3; letter-spacing: -0.015em; margin: 0 0 8px; font-weight: 650; max-width: 900px; }
+h2 { font-size: 18px; margin: 0 0 12px; letter-spacing: -0.01em; }
+h3 { font-size: 15px; margin: 0 0 8px; }
+p.lede { color: var(--ink-2); margin: 0 0 20px; max-width: 860px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 900px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+/* Source labels */
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; line-height: 1; padding: 4px 7px; border-radius: 999px; border: 1px solid var(--axis); color: var(--ink-2); background: #fff; white-space: nowrap; vertical-align: middle; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: currentColor; opacity: .55; }
+.chip.modelled { border-color: #b9d6df; color: #155e7a; }
+.chip.nimbus { border-color: #c3cdd2; color: #3e5a63; }
+.chip.assumption { border-color: #e7b8a3; color: #9a3d16; }
+.chip.record { border-color: #b7d9c5; color: #1e6b3f; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+/* Ratings: always a word, never colour alone */
+.rating { display: inline-flex; align-items: center; justify-content: center; min-width: 70px; padding: 3px 9px; border-radius: 6px; font-size: 12.5px; font-weight: 600; line-height: 1.3; }
+.rating.High { background: var(--high); color: #fff; }
+.rating.Medium { background: var(--medium); color: #10343a; }
+.rating.Low { background: var(--low); color: #24434a; }
+.rating.NotRated { background: repeating-linear-gradient(135deg, #f0f4f5 0 5px, #dde5e8 5px 7px); color: var(--ink-2); font-weight: 500; }
+.rating.NoData { background: transparent; border: 1px dashed var(--axis); color: var(--muted); font-weight: 500; }
+.arrow { color: var(--muted); margin: 0 4px; }
+.pair { display: inline-flex; align-items: center; white-space: nowrap; }
+.matrix .rating { min-width: 0; padding: 2px 7px; font-size: 12px; white-space: nowrap; }
+.matrix td.nw { white-space: nowrap; }
+.matrix .rainval { font-size: 12px; color: var(--muted); margin-left: 4px; }
+
+/* Tiles */
+.tile .label { font-size: 13px; color: var(--ink-2); font-weight: 600; text-transform: none; }
+.tile .hero { font-size: 40px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+.tile .hero small { font-size: 16px; font-weight: 500; color: var(--ink-2); letter-spacing: 0; }
+.tile .sub { color: var(--ink-2); font-size: 13.5px; }
+.tile .compare { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--grid); font-size: 13.5px; }
+
+/* Overview layout */
+.overview-main { display: grid; grid-template-columns: 360px 1fr; gap: 16px; margin-top: 16px; align-items: start; }
+@media (max-width: 1000px) { .overview-main { grid-template-columns: 1fr; } }
+.seg { display: inline-flex; border: 1px solid var(--axis); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; background: var(--surface); padding: 5px 12px; cursor: pointer; font-size: 13px; color: var(--ink-2); }
+.seg button + button { border-left: 1px solid var(--axis); }
+.seg button[aria-pressed="true"] { background: #e1eef2; color: var(--accent-ink); font-weight: 600; }
+.map-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+svg.map { width: 100%; height: auto; display: block; }
+.map .land-ind { fill: #e9eff1; stroke: #a9b8bf; stroke-width: 1.4; }
+.map .land-other { fill: #f7f9fa; stroke: #d6dee2; stroke-width: 1; }
+.map .supply { fill: none; stroke: #3e5a63; stroke-width: 1.6; stroke-dasharray: 5 4; }
+.map .plant-dot { stroke: #24434a; stroke-width: 1.8; cursor: pointer; }
+.map .plant-dot:hover, .map .plant-dot:focus { stroke: #13303a; outline: none; }
+.map .plant-label { font-size: 30px; font-weight: 500; fill: #1f3036; paint-order: stroke; stroke: #e9eff1; stroke-width: 5px; stroke-linejoin: round; pointer-events: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12.5px; color: var(--ink-2); margin-top: 8px; align-items: center; }
+.legend .sw { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.legend .ln { display: inline-block; width: 18px; border-top: 2px dashed #3e5a63; margin-right: 4px; vertical-align: 3px; }
+
+table.matrix { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.matrix th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 12.5px; padding: 8px 8px; border-bottom: 1px solid var(--axis); vertical-align: bottom; }
+.matrix td { padding: 9px 8px; border-bottom: 1px solid var(--grid); vertical-align: middle; }
+.matrix tr.row { cursor: pointer; }
+.matrix tr.row:hover td { background: #eff4f6; }
+.matrix tr.row:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+.matrix .num { text-align: right; font-variant-numeric: tabular-nums; }
+.matrix .pname { font-weight: 600; }
+.matrix .ptype { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.flag-pill { display: inline-block; font-size: 11.5px; padding: 2px 7px; border-radius: 5px; background: #e1eef2; color: #155e7a; margin: 1px 2px 1px 0; white-space: nowrap; }
+.callout { margin-top: 16px; background: #e8f2f5; border: 1px solid #c9dfe6; border-radius: var(--radius); padding: 12px 16px; font-size: 14px; }
+
+/* Plant detail */
+.plant-picker { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.plant-picker a { text-decoration: none; font-size: 13px; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); color: var(--ink-2); }
+.plant-picker a[aria-current="true"] { border-color: var(--accent); color: var(--accent-ink); font-weight: 600; background: #e8f2f5; }
+.profile { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px 20px; margin-top: 12px; }
+.profile div span { display: block; font-size: 12px; color: var(--muted); }
+.profile div strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width: 800px) { .profile { grid-template-columns: repeat(2, 1fr); } }
+.hazard { margin-top: 16px; }
+.hazard-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.big-change { font-size: 22px; font-weight: 650; font-variant-numeric: tabular-nums; margin: 4px 0; }
+.big-change .unit { font-size: 14px; font-weight: 500; color: var(--ink-2); }
+.note { background: #eff4f6; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; margin-top: 10px; color: var(--ink-2); }
+.note.warn { background: #fff4d6; color: #5b4300; }
+table.simple { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+.simple th, .simple td { padding: 7px 8px; border-bottom: 1px solid var(--grid); text-align: left; }
+.simple th { color: var(--ink-2); font-weight: 600; font-size: 12.5px; }
+.simple td.num { font-variant-numeric: tabular-nums; }
+.simple tr.headline td { background: #e8f2f5; }
+svg.range { width: 100%; max-width: 720px; height: auto; display: block; margin-top: 8px; }
+.range .band-low { fill: #e9eff1; }
+.range .band-medium { fill: #e3eef0; }
+.range .band-high { fill: #f8dcdc; }
+.range .axis-text { font-size: 11px; fill: var(--muted); }
+.range .row-label { font-size: 12px; fill: var(--ink-2); }
+.range .span { stroke: #3e5a63; stroke-width: 2; stroke-linecap: round; }
+.range .model { fill: #fff; stroke: var(--model-dot); stroke-width: 1.5; }
+.range .median { fill: #13303a; stroke: #fff; stroke-width: 2; }
+.range .median-text { font-size: 12px; font-weight: 600; fill: #13303a; }
+.supply-box { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* Supply chain */
+svg.chain { width: 100%; max-width: 760px; height: auto; display: block; margin: 8px auto 0; }
+.chain .node rect { fill: var(--surface); stroke: var(--axis); stroke-width: 1.2; }
+.chain .node text { font-size: 13px; fill: var(--ink); }
+.chain .node .t2 { font-size: 11.5px; fill: var(--ink-2); }
+.chain .edge { stroke: #3e5a63; stroke-width: 1.6; fill: none; }
+.chain .edge-label { font-size: 11.5px; fill: var(--ink-2); }
+
+/* Methodology */
+.method h2 { margin-top: 0; }
+.method section { margin-top: 16px; }
+.method dl { display: grid; grid-template-columns: 200px 1fr; gap: 6px 16px; margin: 8px 0 0; font-size: 14px; }
+.method dt { color: var(--ink-2); font-weight: 600; }
+.method dd { margin: 0; }
+@media (max-width: 700px) { .method dl { grid-template-columns: 1fr; } }
+.method ul { margin: 6px 0 0; padding-left: 20px; }
+.method li { margin: 4px 0; }
+
+/* Assumptions drawer */
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.25); display: none; z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: var(--surface); z-index: 41; transform: translateX(100%); transition: transform .2s ease; display: flex; flex-direction: column; box-shadow: -8px 0 24px rgba(0,0,0,.08); }
+body.drawer-open .drawer { transform: none; }
+body.drawer-open .drawer-backdrop { display: block; }
+.drawer header { padding: 18px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.drawer .body { padding: 18px 20px; overflow: auto; flex: 1; }
+.drawer footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.field .hint { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.field input, .field select { font: inherit; padding: 6px 8px; border: 1px solid var(--axis); border-radius: 7px; width: 120px; background: #fff; }
+.field select { width: 100%; }
+.form-error { display: none; background: #fbe4e4; color: #8a1f1f; border-radius: 8px; padding: 8px 10px; font-size: 13.5px; margin-bottom: 12px; }
+.form-error.show { display: block; }
+
+/* Tooltip */
+.tip { position: fixed; pointer-events: none; background: #13303a; color: #fff; font-size: 12.5px; padding: 8px 10px; border-radius: 7px; max-width: 260px; z-index: 50; display: none; line-height: 1.4; }
+
+/* States */
+.state { text-align: center; padding: 80px 20px; }
+.state h2 { margin-bottom: 6px; }
+footer.site { border-top: 1px solid var(--border); padding: 18px 0 28px; font-size: 12.5px; color: var(--muted); line-height: 1.8; }
+footer.site a { color: var(--ink-2); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media print { header.top, .drawer, .drawer-backdrop, .btn { display: none !important; } body { background: #fff; } }
+
+/* ---- v1.1: simplified layout ---- */
+.src { font-size: 12.5px; color: var(--muted); margin: 12px 0 0; line-height: 1.6; }
+.src a { color: var(--ink-2); }
+.src .k { font-style: normal; font-size: 11.5px; padding: 0 2px; }
+.k-m { color: #155e7a; } .k-n { color: #3e5a63; } .k-a { color: #9a3d16; } .k-r { color: #1e6b3f; }
+.finding { display: grid; grid-template-columns: minmax(280px, 0.85fr) 1.15fr; gap: 28px; align-items: center; margin-top: 16px; }
+@media (max-width: 900px) { .finding { grid-template-columns: 1fr; } }
+.finding .num { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; align-items: center; justify-content: center; font-weight: 650; font-size: 14px; margin-bottom: 10px; }
+.finding h2 { font-size: 22px; line-height: 1.3; margin: 0 0 8px; }
+.finding .fact { color: var(--ink-2); margin: 0 0 12px; }
+.finding .more { font-weight: 600; text-decoration: none; font-size: 14px; }
+.finding .more:hover { text-decoration: underline; }
+.finding .stat { font-size: 44px; font-weight: 650; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; margin: 4px 0 10px; }
+.finding .stat small { font-size: 16px; font-weight: 500; color: var(--ink-2); letter-spacing: 0; }
+.visual { min-width: 0; }
+.finding .visual svg.map { max-width: 430px; margin: 0 auto; }
+.finding .visual .legend, .finding .visual > p { justify-content: center; text-align: center; }
+svg.dumbbell { width: 100%; height: auto; display: block; }
+.dumbbell .lbl { font-size: 12.5px; fill: var(--ink-2); }
+.dumbbell .val { font-size: 12px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.dumbbell .ax { font-size: 11px; fill: var(--muted); }
+.dumbbell .thr { stroke: var(--high); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.dumbbell .thr-t { font-size: 11px; fill: #9e2a2a; }
+.dumbbell .seg-l { stroke: #9fb0b6; stroke-width: 2; }
+.dumbbell .d-today { fill: #fff; stroke: #3e5a63; stroke-width: 1.8; }
+.dumbbell .d-fut { fill: #13303a; }
+.closing { margin-top: 20px; background: #13303a; color: #fff; border-radius: var(--radius); padding: 18px 22px; font-size: 16px; }
+.closing strong { color: #fff; }
+.also { margin-top: 12px; font-size: 13.5px; color: var(--ink-2); }
+details.hz { border-top: 1px solid var(--grid); }
+details.hz:first-of-type { border-top: 0; }
+details.hz summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 150px 190px 1fr 22px; gap: 12px; align-items: center; padding: 14px 4px; }
+details.hz summary::-webkit-details-marker { display: none; }
+details.hz summary:hover { background: #eff4f6; }
+details.hz summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+details.hz .hz-name { font-weight: 600; }
+details.hz .hz-line { color: var(--ink-2); font-size: 14px; }
+details.hz .chev { color: var(--muted); transition: transform .15s; text-align: center; }
+details.hz[open] .chev { transform: rotate(90deg); }
+details.hz .hz-body { padding: 0 4px 16px; }
+@media (max-width: 760px) { details.hz summary { grid-template-columns: 1fr auto; } details.hz .hz-line { grid-column: 1 / -1; } details.hz .chev { display: none; } }
+.summary-line { font-size: 17px; margin: 10px 0 0; max-width: 900px; }
+.profile.compact { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 800px) { .profile.compact { grid-template-columns: repeat(2, 1fr); } }
+ol.refs { padding-left: 22px; margin: 6px 0 0; font-size: 14px; }
+ol.refs li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Nimbus Cement · Physical climate exposure<small>For Meera Iyer, Head of Sustainability</small></div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#overview" data-tab="overview">Overview</a>
+      <a href="#plants" data-tab="plants">All plants</a>
+      <a href="#supply" data-tab="supply">Supply chain</a>
+      <a href="#method" data-tab="method">Methodology &amp; sources</a>
+    </nav>
+    <button class="btn" id="open-assumptions" type="button">Assumptions</button>
+  </div>
+</header>
+<div class="proto-note"><div class="wrap">Prototype v1. Nimbus Cement and its plant data are fictional (supplied by Oren). Climate and water figures are real model outputs, downloaded <span id="retrieved-date">18 Nov 2026</span>. Every number names its source and whether it is modelled, company data or our assumption.</div></div>
+<div class="custom-banner" role="status"><div class="wrap"><strong>Custom thresholds in use.</strong> <span>This view does not follow the published method. Do not use it for board or audit reporting.</span> <button class="btn" type="button" id="banner-reset">Reset to defaults</button></div></div>
+
+<main><div class="wrap" id="app" aria-live="polite">
+  <div class="state"><h2>Loading exposure data…</h2></div>
+</div></main>
+
+<footer class="site"><div class="wrap">
+  Sources: <a href="https://open-meteo.com/en/docs/climate-api" target="_blank" rel="noopener">Open-Meteo</a> · <a href="https://www.wri.org/data/aqueduct-global-maps-40-data" target="_blank" rel="noopener">WRI Aqueduct 4.0</a> · <a href="https://mausam.imd.gov.in/pdfs/heatcolduser/morning_heat_bulletin.pdf" target="_blank" rel="noopener">IMD</a> · <a href="https://www.ncrmp.gov.in/?p=6750" target="_blank" rel="noopener">NCRMP</a> · <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> · <a href="#method">Full methodology</a><br>
+  Exposure, not losses: ₹ figures are revenue at exposed plants, not damage estimates.
+</div></footer>
+
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Assumptions" aria-hidden="true">
+  <header><h2 style="margin:0">Assumptions</h2><button class="btn" type="button" id="close-assumptions">Close</button></header>
+  <div class="body">
+    <p class="small muted" style="margin-top:0">These thresholds are ours, not industry standards. They were fixed before any indicator was calculated. Changing them updates every screen and turns on a warning banner.</p>
+    <div class="form-error" id="form-error" role="alert"></div>
+    <div class="field">
+      <label for="heat-medium">Heat: Medium from (days a year)</label>
+      <input id="heat-medium" type="number" min="0" max="365" step="1">
+      <div class="hint">Days reaching IMD's heatwave threshold (40°C inland, 37°C coastal). Default 10.</div>
+    </div>
+    <div class="field">
+      <label for="heat-high">Heat: High above (days a year)</label>
+      <input id="heat-high" type="number" min="0" max="365" step="1">
+      <div class="hint">Default 30, roughly a month of hot working days. Must be at least the Medium value.</div>
+    </div>
+    <div class="field">
+      <label for="water-high">Water stress: counts as High from</label>
+      <select id="water-high">
+        <option value="High">Aqueduct "High" (40% or more of supply used) and above</option>
+        <option value="Extremely high">Aqueduct "Extremely high" (80% or more) only</option>
+      </select>
+      <div class="hint">Default: Aqueduct "High" and above. Categories are WRI's own.</div>
+    </div>
+    <div class="note small">Fixed, not adjustable here: IMD temperature thresholds (40°C / 37°C), periods (2010–2025 vs 2030–2045), scenario, and the supply-link rule. Rain is shown but not rated in v1 (see Methodology).</div>
+  </div>
+  <footer><button class="btn" type="button" id="reset-assumptions">Reset to defaults</button><button class="btn primary" type="button" id="apply-assumptions">Apply</button></footer>
+</aside>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
