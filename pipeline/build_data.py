@@ -157,7 +157,7 @@ REFERENCES = [
     {"key": "ipcc", "title": "IPCC AR6 WGI Chapter 4: near-term projections across scenarios", "url": "https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-4/"},
     {"key": "imd_heat", "title": "IMD heat bulletin: heatwave criteria (40°C plains, 37°C coastal)", "url": "https://mausam.imd.gov.in/pdfs/heatcolduser/morning_heat_bulletin.pdf"},
     {"key": "imd_rain", "title": "MoES reply to Rajya Sabha (Jul 2023): IMD rainfall categories", "url": "https://www.moes.gov.in/sites/default/files/RS-in-25-27-07-2023.pdf"},
-    {"key": "imd_grid", "title": "IMD 0.25° gridded rainfall (for the planned validation)", "url": "https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html"},
+    {"key": "imd_grid", "title": "IMD 0.25° gridded rainfall, 2010–2024 (used for the rain check)", "url": "https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html"},
     {"key": "natural_earth", "title": "Natural Earth admin-0 countries, India point of view", "url": "https://www.naturalearthdata.com/"},
 ]
 
@@ -246,6 +246,32 @@ def main():
         if abs(shipped - linked) > 0.005:
             raise SystemExit(f"{r['plant_id']}: clinker shipped {shipped} != supply links {linked}")
 
+    # IMD observed rainfall check (pipeline/validate_rain_imd.py), if it has been run
+    check_path = DATA / "validation" / "rain_imd_check.json"
+    rain_validation = None
+    if check_path.exists():
+        chk = json.loads(check_path.read_text())
+        for p in plants:
+            row = chk["plants"].get(p["id"])
+            if row:
+                ms = row["models"].values()
+                p["rain"]["imd"] = {
+                    "years": chk["years"],
+                    "annual_mm": round(row["imd"]["annual_mm"]),
+                    "heavy_days": round(row["imd"]["heavy_days"], 1),
+                    "models_annual_mm": round(st.median(m["annual_mm"] for m in ms)),
+                    "models_heavy_days": round(st.median(m["heavy_days"] for m in ms), 1),
+                    "models_passing": sum(m["pass"] for m in ms),
+                }
+        rain_validation = {"years": chk["years"], "rule": chk["rule"], "trusted_models": chk["trusted_models"],
+                           "rate_rain": chk["rate_rain"],
+                           "plants_passed": {m: v["plants_passed"] for m, v in chk["models"].items()},
+                           "imd_max_day_mm": None}
+        imd_csv = DATA / "raw" / "imd" / "imd_daily_rain_2010_2024.csv"
+        if imd_csv.exists():
+            vals = [float(r["rain_mm"]) for r in read_csv(imd_csv) if r["rain_mm"] not in ("", "nan", "NaN")]
+            rain_validation["imd_max_day_mm"] = round(max(vals))
+
     implausible = sum(p["rain"]["implausible_days"] for p in plants)
     data = {
         "meta": {
@@ -260,6 +286,7 @@ def main():
             "heavy_rain_mm": HEAVY_RAIN_MM,
             "rain_quality": {"implausible_threshold_mm": IMPLAUSIBLE_MM, "implausible_days": implausible,
                              "max_day_mm": max(p["rain"]["max_day_mm"] for p in plants)},
+            "rain_validation": rain_validation,
             "flag_sources": FLAG_SOURCES,
             "references": REFERENCES,
         },

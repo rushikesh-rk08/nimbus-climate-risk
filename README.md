@@ -29,17 +29,21 @@ pipeline/
   fetch_data.py       downloads Open-Meteo and WRI Aqueduct data (needs internet)
   build_data.py       turns the raw downloads into site/data.json (standard library only)
   build_map.py        India outline, Natural Earth India point of view, into site/map.json
+  validate_rain_imd.py  checks each climate model's rainfall against IMD observations
 data/
   nimbus_cement_plants.csv    plant file supplied by Oren
   raw/openmeteo/              18 unmodified API responses (9 plants x 2 periods, 7 models)
   raw/aqueduct/               Aqueduct 4.0 rows for the 9 plant basins
   raw/fetch_log.txt           download log with timestamps (18 Nov 2026, UTC)
+  raw/imd/                    IMD observed daily rainfall 2010-2024 at the 9 plant cells, with fetch log
+  validation/                 result of the IMD rain check
 ```
 
 ## Rebuild the data
 
 ```
 python pipeline/fetch_data.py                 # optional: re-download (internet needed)
+python pipeline/validate_rain_imd.py          # IMD rain check -> data/validation/
 python pipeline/build_data.py                 # raw downloads -> site/data.json
 python pipeline/build_map.py ne_10m_admin_0_countries_ind.geojson   # -> site/map.json
 ```
@@ -61,7 +65,7 @@ Then open http://localhost:8000.
 | Periods | Today 2010–2025, 2040 view 2030–2045 (equal 16-year windows) |
 | Heat | Days at or above IMD's heatwave threshold (40°C inland, 37°C coastal), median of 7 CMIP6 models. Low < 10, Medium 10–30, High > 30 days |
 | Water stress | WRI Aqueduct 4.0; 2040 view uses the 2015–2045 projection, pessimistic scenario. High = Aqueduct High or Extremely high |
-| Heavy rain | Shown, not rated: the model data contains physically implausible days (up to 1,248 mm) and the models disagree about tenfold |
+| Heavy rain | Shown, not rated: the model data contains physically implausible days (up to 1,248 mm; IMD's wettest observed day at these plants is 363 mm), and checked against IMD 2010–2024 no model matches at 7 of 9 plants |
 | Coastal storm, river flood | Flags at the plants concerned, current exposure only |
 | Supply links | A grinding unit's water rating is the worse of its own and its clinker supplier's |
 
@@ -72,4 +76,5 @@ Thresholds were fixed before any indicator was calculated.
 - [Open-Meteo Climate API](https://open-meteo.com/en/docs/climate-api): CMIP6 data, CC BY 4.0, attribution to CMIP6 and Open-Meteo
 - [WRI Aqueduct 4.0](https://www.wri.org/data/aqueduct-global-maps-40-data): Creative Commons, attribution to WRI
 - [Natural Earth](https://www.naturalearthdata.com/): public domain, India point of view boundaries
+- [IMD 0.25° gridded rainfall](https://www.imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html): observed rainfall used for the rain check (Pai et al. 2014)
 - Cyclone records: IMD, NCRMP and press reports, linked on the Methodology page

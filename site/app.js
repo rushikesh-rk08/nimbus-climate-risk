@@ -23,6 +23,7 @@ const SRC = {
   rule: 'supply-link rule <em class="k k-a">our assumption</em>',
   buffer: 'no stock buffer or other supplier <em class="k k-a">our assumption</em>',
   rec: 'named past events <em class="k k-r">historical record</em>',
+  imd: '<a href="#method">IMD gridded rainfall</a> <em class="k k-r">observed record</em>',
 };
 const src = (...keys) => `<p class="src">Source: ${keys.map(k => SRC[k]).join(" · ")}</p>`;
 
@@ -184,7 +185,7 @@ function viewOverview() {
   <div class="closing">${persists
     ? "<strong>This exposure is structural, not temporary.</strong> It persists through the 2040 view and heat rises at most plants, so it is a basis for decisions now, not a future watch item."
     : "<strong>This exposure changes by the 2040 view.</strong> See each plant for where it grows or eases."}</div>
-  <p class="also"><strong>Also shown, not counted above:</strong> coastal storm exposure at ${storm} and river flood exposure at ${flood} (current only, no 2040 projection). Heavy rain is not rated: the climate models are unreliable for extreme rainfall here. <a href="#method">Why</a></p>`;
+  <p class="also"><strong>Also shown, not counted above:</strong> coastal storm exposure at ${storm} and river flood exposure at ${flood} (current only, no 2040 projection). Heavy rain is not rated: checked against IMD's observed rainfall, the climate models do not match it at enough plants. <a href="#method">Why</a></p>`;
 }
 function project(lon, lat) {
   const [L0, A0, L1, A1] = S.map.bounds;
@@ -363,13 +364,13 @@ function viewPlant(p) {
     <p class="small muted" style="margin:8px 0 0">Days reaching IMD's heatwave threshold (40°C on the plains, 37°C at coastal stations), not IMD-declared heatwave days.${p.coastal ? " Humid heat is not covered in v1." : ""}</p>
     ${src("om", "thr")}`;
   const rainBody = `${rangeSVG(rain.heavy_days, "days", null)}
-    <div class="note warn">The 7 models disagree widely here (${d1(rain.heavy_days.today.min)} to ${d1(rain.heavy_days.today.max)} heavy-rain days a year today).${rain.implausible_days ? ` This plant's model data includes ${rain.implausible_days} days above 300 mm, which are physically implausible.` : ""} Average annual rainfall (${Math.round(rain.annual_mm.today.median)} mm) is realistic; the extremes are not. Rain will be rated after a check against IMD observed rainfall.</div>
-    ${src("om")}`;
+    <div class="note warn">The 7 models disagree widely here (${d1(rain.heavy_days.today.min)} to ${d1(rain.heavy_days.today.max)} heavy-rain days a year today).${rain.implausible_days ? ` This plant's model data includes ${rain.implausible_days} days above 300 mm, which are physically implausible.` : ""} ${rain.imd ? ` <strong>Checked against IMD observed rainfall (${rain.imd.years}):</strong> IMD recorded ${rain.imd.annual_mm} mm and ${rain.imd.heavy_days} heavy-rain days a year here; the models' median is ${rain.imd.models_annual_mm} mm and ${rain.imd.models_heavy_days} days. ${rain.imd.models_passing} of 7 models match IMD at this plant.` : " Rain will be rated after a check against IMD observed rainfall."}</div>
+    ${src("om", ...(rain.imd ? ["imd"] : []))}`;
 
   const rows = [
     hzRow("Water stress", pair(adj, adjF), `${esc(w.baseline.category)} basin stress: ${share(w.baseline.raw)}${adj !== own ? ". Rated through its supplier" : ""}`, waterBody),
     hzRow("Heat", pair(heatOwn(p, "today"), heatOwn(p, "future")), `${Math.round(hd.today.median)} → ${Math.round(hd.future.median)} days a year at or above ${p.heat.threshold_c}°C; ${esc(agreement(hd))}`, heatBody),
-    hzRow("Heavy rain", ratingHTML("Not rated"), `${d1(rain.heavy_days.today.median)} → ${d1(rain.heavy_days.future.median)} days a year; models unreliable for extremes here`, rainBody),
+    hzRow("Heavy rain", ratingHTML("Not rated"), `${d1(rain.heavy_days.today.median)} → ${d1(rain.heavy_days.future.median)} days a year; models do not match IMD observations`, rainBody),
     ...p.flags.map(f => hzRow(f.type === "coastal_storm" ? "Coastal storm" : "River flood", ratingHTML("Flag"), esc(f.points[0]),
       `<ul style="margin:0;padding-left:20px">${f.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
        <p class="src">Sources: ${flagSources(f)} · <em class="k ${f.type === "coastal_storm" ? "k-r" : "k-m"}">${f.type === "coastal_storm" ? "historical record and modelled" : "modelled"}</em> · no 2040 projection</p>`)),
@@ -493,8 +494,9 @@ function viewMethod() {
 
   <section class="card"><h2>Heavy rain · shown, not rated</h2><dl>
     <dt>Measure</dt><dd>Days a year with ${m.heavy_rain_mm} mm or more, IMD's "heavy rainfall" ${ref("imd_rain")}.</dd>
-    <dt>Why not rated</dt><dd>A check of record values found ${m.rain_quality.implausible_days} model-days above ${m.rain_quality.implausible_threshold_mm} mm across the 9 plants, up to ${m.rain_quality.max_day_mm.toLocaleString("en-IN")} mm in a day, which is physically implausible here. The models also disagree about tenfold on how often heavy rain falls. Annual totals are realistic: the bias correction fixes averages, not extremes.</dd>
-    <dt>Next step</dt><dd>Compare each model's 2010–2025 rainfall with IMD's gridded observations ${ref("imd_grid")}; rate rain using only the models that pass.</dd></dl></section>
+    <dt>Why not rated</dt><dd>A check of record values found ${m.rain_quality.implausible_days} model-days above ${m.rain_quality.implausible_threshold_mm} mm across the 9 plants, up to ${m.rain_quality.max_day_mm.toLocaleString("en-IN")} mm in a day, which is physically implausible here${m.rain_validation && m.rain_validation.imd_max_day_mm ? `: IMD's wettest recorded day at these plants in ${m.rain_validation.years} was ${m.rain_validation.imd_max_day_mm} mm` : ""}. The models also disagree about tenfold on how often heavy rain falls.</dd>
+    ${m.rain_validation ? `<dt>IMD check</dt><dd>Each model's ${m.rain_validation.years} rainfall was compared with IMD's 0.25° gridded observations ${ref("imd_grid")} at each plant, on long-run statistics (models do not reproduce real dates). The rule was fixed before seeing the data: heavy-rain days within ±50% (or within 1 day where IMD has fewer than 2) and annual rainfall within ±20%; a model is trusted if it passes at 7 or more of 9 plants. <strong>No model is trusted</strong> (best: ${Object.entries(m.rain_validation.plants_passed).sort((a, b) => b[1] - a[1]).slice(0, 2).map(([k, v]) => `${esc(k)} ${v} of 9`).join(", ")}). The models also underestimate annual rainfall at some plants, by about half at Mundra.</dd>
+    <dt>Next step</dt><dd>Rate rain only from a source that passes the same IMD check.</dd>` : `<dt>Next step</dt><dd>Compare each model's rainfall with IMD's gridded observations ${ref("imd_grid")}; rate rain using only the models that pass.</dd>`}</dl></section>
 
   <section class="card"><h2>Coastal storm and river flood · flags, current only</h2><dl>
     <dt>Coastal storm</dt><dd>Mundra and Paradip, the two coastal plants: official cyclone-proneness, named past cyclones and Aqueduct coastal flood risk.</dd>
