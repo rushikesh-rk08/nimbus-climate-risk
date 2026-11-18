@@ -94,4 +94,3 @@
 [11:35:10]   table Aqueduct40_baseline_annual_y2023m07d05: kept 9 rows matching plant basins via string_id
 [11:35:10]   table Aqueduct40_future_annual_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
 [11:35:10]   table Aqueduct40_baseline_monthly_y2023m07d05: kept 9 rows matching plant basins via pfaf_id
-[11:35:11] Packed nimbus_data_upload.zip (2.1 MB). Upload this file and you're done.
